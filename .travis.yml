@@ -11,7 +11,9 @@ arch:
     - perl
     - ccache
     # aur packages
-    - gimp-git
+    # - gimp-git
+    - gimp-extras
+    - gimp-plugin-saveforweb
   script:
     - "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
     - "echo $packages"
@@ -29,3 +31,6 @@ script:
   # add ccache to the base initial packages for good measure (so that pacaur gets correctly generated too)
   - "sed -i 's/base-devel/base-devel\" \"ccache/' ./arch-travis.sh"
   - "bash ./arch-travis.sh"
+  - "ls -lash"
+  - "ls -lash $HOME/.cache"
+  - "ls -lash .cache"
