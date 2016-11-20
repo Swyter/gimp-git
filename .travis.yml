@@ -10,14 +10,23 @@ arch:
     - python
     - perl
     - ccache
+    - tree
     # aur packages
     # - gimp-git
     - gimp-extras
-    - gimp-plugin-saveforweb
+    #- gimp-plugin-saveforweb
   script:
-    - "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
-    - "echo $packages"
-    - "pacman -Qi gimp-git"
+    - "find ~ -nowarn -type f -name '*.pkg.tar.xz'`"
+    - "find $HOME -nowarn -type f -name '*.pkg.tar.xz'`"
+    - ls -lash .
+    - pwd
+    - ls -lash $HOME
+    - whoami
+    - tree .
+    - tree $HOME
+    #- "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
+    #- "echo $packages"
+    #- "pacman -Qi gimp-git"
     #- "cd /tmp"
     #- "git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git && cd gimp-git"
     #- "for i in $packages; do cp \"$i\" .; done"
@@ -34,3 +43,8 @@ script:
   - "ls -lash"
   - "ls -lash $HOME/.cache"
   - "ls -lash .cache"
+  - sudo apt-get -qq update
+  - sudo apt-get install -y tree
+  - tree .
+  - tree $HOME
+  - tree .cache
