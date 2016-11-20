@@ -16,26 +16,18 @@ arch:
     - gimp-extras
     #- gimp-plugin-saveforweb
   script:
-    - find ~ -nowarn -type f -name '*.pkg.tar.xz'
-    - find . -nowarn -type f -name '*.pkg.tar.xz'
-    - find $HOME -nowarn -type f -name '*.pkg.tar.xz'
-    - ls -lash .
-    - pwd
-    - ls -lash $HOME
-    - whoami
-    - echo MARKERYYY
-    - tree .
-    - tree $HOME
-    - echo LOL > AAATEST
-    #- "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
-    #- "echo $packages"
+    - packages="`find ~ -nowarn -type f -name '*.pkg.tar.xz'`"
+    - "echo $packages"
     #- "pacman -Qi gimp-git"
-    #- "cd /tmp"
-    #- "git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git && cd gimp-git"
-    #- "for i in $packages; do cp \"$i\" .; done"
-    #- "repo-add gimp-git.db.tar.xz *.pkg.tar.xz"
-    #- "git add *"
-    #- "git commit -am \"Committed by travis-ci on `date`\" && git push"
+    - "cd /tmp"
+    - "git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git && cd gimp-git"
+    - "for i in $packages; do cp \"$i\" .; done"
+    - "repo-add gimp-git.db.tar.xz *.pkg.tar.xz"
+    - "git add *.tar.xz"
+    - "git commit -am \"Committed by travis-ci on `date`\" && git push"
+    - pwd
+    - echo "$HOME"
+    - ls -lash $HOME
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
@@ -44,14 +36,7 @@ script:
   - "sed -i 's/base-devel/base-devel\" \"ccache/' ./arch-travis.sh"
   - "bash ./arch-travis.sh"
   - "ls -lash"
-  - "ls -lash .cache"
   - cd $HOME
   - "ls -lash $HOME"
   - "ls -lash $HOME/.cache"
-  - "ls -lash .cache"
-  - sudo apt-get -qq update
-  - sudo apt-get install -y tree
-  #- tree .
-  #- tree $HOME
-  - tree .cache
   - pwd
