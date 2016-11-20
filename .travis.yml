@@ -1,11 +1,20 @@
 sudo: required
 language: c
+cache: ccache
 arch:
   packages:
     # pacman packages
     - python
     - perl
+    - ccache
+    - tree
     # aur packages
     - gimp-git
+  script:
+    - "ls /var/cache/pacman/pkg/"
+    - "tree /tmp"
 script:
-  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+  - "curl -o https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
+  # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
+  - "sed '/add mirror/a\ \ as_root \"sed -i '\''s/!ccache/ccache/'\'' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf\"' ./arch-travis.sh"
+  - "bash ./arch-travis.sh"
