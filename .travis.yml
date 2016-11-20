@@ -13,7 +13,9 @@ arch:
   script:
     - "ls /var/cache/pacman/pkg/"
     - "tree /tmp"
+    - "find / -type f -name '*.pkg.tar.xz'"
     - "pacman -Qi gimp-git"
+    - ls "~/.ccache"
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
