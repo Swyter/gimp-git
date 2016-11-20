@@ -1,18 +1,11 @@
 sudo: required
-
+language: c
 arch:
-  repos:
-    - papyros=http://dash.papyros.io/repos/$repo/$arch
   packages:
     # pacman packages
     - python
     - perl
     # aur packages
-    - go-git
-    # packages from papyros repo
-    - papyros-shell
-  script:
-    - "./build_script.sh"
-
+    - gimp-git
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
