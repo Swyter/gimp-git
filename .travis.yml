@@ -2,9 +2,8 @@ sudo: required
 language: c
 cache:
   directories:
-  - .autoconf
-  - .cache
-  - .ccache
+    - $HOME/.cache
+    - $HOME/.ccache
 arch:
   packages:
     # pacman packages
@@ -19,7 +18,7 @@ arch:
     - "tree /tmp"
     - "find / -type f -name '*.pkg.tar.xz'"
     - "pacman -Qi gimp-git"
-    - ls "~/.ccache"
+    - "ls ~/.ccache"
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
