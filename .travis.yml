@@ -14,13 +14,14 @@ arch:
     - gimp-git
   script:
     - "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
+    - "echo $packages"
     - "pacman -Qi gimp-git"
-    - "cd /tmp"
-    - "git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git && cd gimp-git"
-    - "for i in $packages; do cp \"$i\" .; done"
-    - "repo-add gimp-git.db.tar.xz *.pkg.tar.xz"
-    - "git add *"
-    - "git commit -am \"Committed by travis-ci on `date`\" && git push"
+    #- "cd /tmp"
+    #- "git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git && cd gimp-git"
+    #- "for i in $packages; do cp \"$i\" .; done"
+    #- "repo-add gimp-git.db.tar.xz *.pkg.tar.xz"
+    #- "git add *"
+    #- "git commit -am \"Committed by travis-ci on `date`\" && git push"
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
