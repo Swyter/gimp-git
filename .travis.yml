@@ -1,6 +1,10 @@
 sudo: required
 language: c
-cache: ccache
+cache:
+  directories:
+  - .autoconf
+  - .cache
+  - .ccache
 arch:
   packages:
     # pacman packages
