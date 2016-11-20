@@ -13,8 +13,11 @@ arch:
   script:
     - "ls /var/cache/pacman/pkg/"
     - "tree /tmp"
+    - "pacman -Qi gimp-git"
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
   - "sed -i '/add mirror/a\ \ as_root \"sed -i '\''s/!ccache/ccache/'\'' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf\"' ./arch-travis.sh"
+  # add ccache to the base initial packages for good measure (so that pacaur gets correctly generated too)
+  - "sed -i 's/base-devel/base-devel" "ccache/' ./arch-travis.sh"
   - "bash ./arch-travis.sh"
