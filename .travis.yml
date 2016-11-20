@@ -24,7 +24,7 @@ arch:
     - git add *.tar.xz
     - git config --global user.email "swyterzone+gimp-git-bot@gmail.com"
     - git config --global user.name  "travis-ci bot"
-    - git commit -am "Committed by travis-ci on `date`" && git push
+    - git commit -am "Committed by travis-ci on `date`" && git push origin gh-pages
     - pwd
     - echo "$HOME"
     - ls -lash $HOME
