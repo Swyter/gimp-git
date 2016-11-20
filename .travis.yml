@@ -17,13 +17,16 @@ arch:
     #- gimp-plugin-saveforweb
   script:
     - find ~ -nowarn -type f -name '*.pkg.tar.xz'
+    - find . -nowarn -type f -name '*.pkg.tar.xz'
     - find $HOME -nowarn -type f -name '*.pkg.tar.xz'
     - ls -lash .
     - pwd
     - ls -lash $HOME
     - whoami
+    - echo MARKERYYY
     - tree .
     - tree $HOME
+    - echo LOL > AAATEST
     #- "packages=`find ~/.cache/pacaur -nowarn -type f -name '*.pkg.tar.xz'`"
     #- "echo $packages"
     #- "pacman -Qi gimp-git"
@@ -34,7 +37,6 @@ arch:
     #- "git add *"
     #- "git commit -am \"Committed by travis-ci on `date`\" && git push"
 script:
-  - cd $HOME
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
   - "sed -i '/add mirror/a\ \ as_root \"sed -i '\''s/!ccache/ccache/'\'' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf\"' ./arch-travis.sh"
@@ -42,6 +44,9 @@ script:
   - "sed -i 's/base-devel/base-devel\" \"ccache/' ./arch-travis.sh"
   - "bash ./arch-travis.sh"
   - "ls -lash"
+  - "ls -lash .cache"
+  - cd $HOME
+  - "ls -lash $HOME"
   - "ls -lash $HOME/.cache"
   - "ls -lash .cache"
   - sudo apt-get -qq update
