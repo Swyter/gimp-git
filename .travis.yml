@@ -5,6 +5,7 @@ cache:
     - $HOME/.cache
     - $HOME/.ccache
     - $HOME/root.x86_64/home/travis/.cache
+    - $HOME/root.x86_64/home/travis/.ccache
 arch:
   packages:
     # pacman packages
@@ -13,20 +14,30 @@ arch:
     - ccache
     - tree
     # aur packages
-    #- gimp-git
+    - gimp-git
     - gimp-extras
-    #- gimp-plugin-saveforweb
+    - gimp-plugin-saveforweb
+    - gimp-plugin-refocusit
+    - gimp-apng
+    - gimp-dds
+    - gimp-webp
+    - gimp-fix-ca
+    - gimp-plugin-texturize
+    - gimp-plugin-wavelet-sharpen
+    - gimp-plugin-normalmap
+    - gimp-script-descreen
   script:
     #- "pacman -Qi gimp-git"
     - alias
     - pwd
+    - ls -lash "$HOME/.cache"
+    - ls -lash "$HOME/.ccache"
     - echo "$HOME"
     - mkdir "$HOME/ARCHROOT_PACKAGES"
     - ls -lash $HOME
     - cd "$HOME/ARCHROOT_PACKAGES"
     - for i in `find ~ -nowarn -type f -name '*.pkg.tar.xz'`; do echo "--> $i"; cp "$i" "$HOME/ARCHROOT_PACKAGES"; done
     - repo-add $HOME/ARCHROOT_PACKAGES/gimp-git.db.tar.xz $HOME/ARCHROOT_PACKAGES/*.pkg.tar.xz
-    
     - pwd
     - ls -lash
 script:
