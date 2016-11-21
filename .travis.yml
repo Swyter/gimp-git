@@ -18,7 +18,7 @@ arch:
     - gimp-extras
     #- gimp-plugin-saveforweb
     #- gimp-plugin-refocusit
-    - gimp-apng
+    #- gimp-apng
     - gimp-dds
     - gimp-webp
     #- gimp-fix-ca
