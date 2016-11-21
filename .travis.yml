@@ -23,8 +23,9 @@ arch:
     - mkdir "$HOME/ARCHROOT_PACKAGES"
     - ls -lash $HOME
     - cd "$HOME/ARCHROOT_PACKAGES"
-    - for i in `find ~ -nowarn -type f -name '*.pkg.tar.xz'`; do echo "--> $i"; cp "$i" .; done
+    - for i in `find ~ -nowarn -type f -name '*.pkg.tar.xz'`; do echo "--> $i"; cp "$i" "$HOME/ARCHROOT_PACKAGES"; done
     - repo-add gimp-git.db.tar.xz *.pkg.tar.xz
+    
     - pwd
     - ls -lash
 script:
