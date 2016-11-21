@@ -21,11 +21,12 @@ arch:
     - pwd
     - echo "$HOME"
     - ls -lash $HOME
-    - git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git /tmp/target-crap
+    - git clone --branch=gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git /tmp/target-crap
     - cd /tmp/target-crap
     - git fetch --all
     - git pull --all
     - git reset --hard
+    - git checkout gh-pages remotes/origin/gh-pages
     - git status
     - git branch
     - git branch -a
