@@ -17,7 +17,6 @@ arch:
     #- gimp-plugin-saveforweb
   script:
     #- "pacman -Qi gimp-git"
-    - git config --get-regexp alias
     - alias
     - pwd
     - echo "$HOME"
@@ -26,6 +25,7 @@ arch:
     - cd /tmp/target-crap
     - git fetch --all
     - git pull --all
+    - git reset --hard
     - git status
     - git branch
     - git branch -a
