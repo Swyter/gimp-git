@@ -17,23 +17,26 @@ arch:
     #- gimp-plugin-saveforweb
   script:
     #- "pacman -Qi gimp-git"
+    - git config --get-regexp alias
+    - alias
+    - pwd
+    - echo "$HOME"
+    - ls -lash $HOME
     - git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git /tmp/target-crap
     - cd /tmp/target-crap
+    - git fetch --all
     - git pull --all
+    - git status
+    - git branch
+    - git branch -a
     - for i in `find ~ -nowarn -type f -name '*.pkg.tar.xz'`; do echo "--> $i"; cp "$i" .; done
     - repo-add gimp-git.db.tar.xz *.pkg.tar.xz
     - git add *.tar.xz
     - git config --global user.email "swyterzone+gimp-git-bot@gmail.com"
     - git config --global user.name  "travis-ci bot"
     - git commit -am "Committed by travis-ci on `date`"
-    - git status
-    - git branch
-    - git branch -a
-    - alias
     - git push origin gh-pages
-    - pwd
-    - echo "$HOME"
-    - ls -lash $HOME
+
 script:
   - "curl -O https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh"
   # insert «sed -i 's/!ccache/ccache/' $ARCH_TRAVIS_CHROOT/etc/makepkg.conf» after the «add mirror» comment
