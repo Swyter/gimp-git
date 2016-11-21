@@ -17,8 +17,9 @@ arch:
     #- gimp-plugin-saveforweb
   script:
     #- "pacman -Qi gimp-git"
-    - git clone -b gh-pages https://swyter:$personal_token@github.com/Swyter/gimp-git /tmp/target-crap
+    - git clone https://swyter:$personal_token@github.com/Swyter/gimp-git /tmp/target-crap
     - cd /tmp/target-crap
+    - git checkout gh-pages
     - for i in `find ~ -nowarn -type f -name '*.pkg.tar.xz'`; do echo "--> $i"; cp "$i" .; done
     - repo-add gimp-git.db.tar.xz *.pkg.tar.xz
     - git add *.tar.xz
