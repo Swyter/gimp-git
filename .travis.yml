@@ -43,8 +43,8 @@ script:
   - ls -lash
   - git add *.tar.xz
   - if [ -n "`git status --porcelain`" ]; then return; fi
-  - cp "$HOME/root.x86_64/$HOME/ARCHROOT_PACKAGES/*" .
-  - ls -lash $HOME/root.x86_64/home/travis
+  - cp "$HOME/root.x86_64/home/travis/ARCHROOT_PACKAGES/*" .
+  - ls -lash $HOME/root.x86_64/home/travis/ARCHROOT_PACKAGES/
   - git config --global user.email "swyterzone+gimp-git-bot@gmail.com"
   - git config --global user.name  "travis-ci bot"
   - git commit -am "Committed by travis-ci on `date`"
