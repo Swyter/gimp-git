@@ -14,7 +14,7 @@ arch:
     - ccache
     - tree
     # aur packages
-    #- gimp-git
+    - gimp-git
     - gimp-extras
     #- gimp-plugin-saveforweb
     #- gimp-plugin-refocusit
