@@ -1,11 +1,11 @@
 sudo: required
 language: c
-cache:
-  directories:
-    - $HOME/.cache
-    - $HOME/.ccache
-    - $HOME/root.x86_64/home/travis/.cache
-    - $HOME/root.x86_64/home/travis/.ccache
+#cache:
+  #directories:
+    #- $HOME/.cache
+    #- $HOME/.ccache
+    #- $HOME/root.x86_64/home/travis/.cache
+    #- $HOME/root.x86_64/home/travis/.ccache
 arch:
   packages:
     # pacman packages
